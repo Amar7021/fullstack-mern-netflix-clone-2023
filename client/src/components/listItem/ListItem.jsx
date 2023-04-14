@@ -17,7 +17,7 @@ const ListItem = ({ index, item }) => {
     const getMovie = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/movies/find/" + item,
+          "https://netflix-server-9afl.onrender.com/api/movies/find/" + item,
           {
             headers: {
               token:

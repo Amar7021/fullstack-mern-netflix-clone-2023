@@ -11,7 +11,7 @@ const Featured = ({ type, setGenre }) => {
     const getRandomMovie = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/movies/random?type=${type}`,
+          `https://netflix-server-9afl.onrender.com/api/movies/random?type=${type}`,
           {
             headers: {
               token:
