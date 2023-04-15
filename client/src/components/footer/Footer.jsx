@@ -19,7 +19,7 @@ const Footer = () => {
         </span>
       </div>
       <div className="footerColumns">
-        <div className="footerCol-1">
+        <div className="footerCol footerCol-1">
           <ul>
             <li>
               <a href="/#">Audio Description</a>
@@ -32,7 +32,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="footerCol-2">
+        <div className="footerCol footerCol-2">
           <ul>
             <li>
               <a href="/#">Help Centre</a>
@@ -45,7 +45,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="footerCol-3">
+        <div className="footerCol footerCol-3">
           <ul>
             <li>
               <a href="/#">Gift Cards</a>
@@ -58,7 +58,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="footerCol-4">
+        <div className="footerCol footerCol-4">
           <ul>
             <li>
               <a href="/#">Media Centre</a>

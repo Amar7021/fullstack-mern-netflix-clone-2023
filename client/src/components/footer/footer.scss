@@ -5,15 +5,15 @@
   color: rgba(255, 255, 255, 0.7);
 
   .socials {
-    margin-left: 218px;
+    margin-left: 175px;
     padding-top: 50px;
 
     @include tablet {
-      margin-left: 135px;
+      margin-left: 100px;
     }
 
     @include mobile {
-      margin-left: 70px;
+      margin-left: 58px;
     }
 
     .fa-brands {
@@ -28,30 +28,36 @@
   }
 
   .footerColumns {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px 0px 20px 28px;
-    gap: 100px;
-    margin-left: 200px;
+    padding: 5px 0px 15px 5px;
+    margin-left: 170px;
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    grid-gap: 30px 30px;
 
     @include tablet {
-      gap: 10px;
+      padding: 0px;
       margin-left: 100px;
+      display: grid;
+      grid-template-columns: repeat(4, max-content);
+      grid-gap: 0px 0px;
     }
 
     @include mobile {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0px;
-      margin-left: 30px;
+      padding: 0px;
+      margin-left: 50px;
+      display: grid;
+      grid-template-columns: repeat(2, 180px);
+      grid-gap: 0px 0px;
     }
+  }
+
+  .footerCol {
+    padding: 5px;
   }
 
   li {
     list-style: none;
-    padding: 10px;
+    padding: 5px;
   }
 
   a {
@@ -84,16 +90,16 @@
   .footerEnd {
     display: flex;
     flex-direction: column;
-    margin-left: 215px;
+    margin-left: 162px;
     padding: 0px 0px 15px 20px;
     color: rgba(255, 255, 255, 0.7);
 
     @include tablet {
-      margin-left: 112px;
+      margin-left: 88px;
     }
 
     @include mobile {
-      margin-left: 35px;
+      margin: 20px 0px 0px 40px;
     }
   }
 
