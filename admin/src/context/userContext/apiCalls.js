@@ -18,7 +18,7 @@ import axios from "axios";
 export const getUsers = async dispatch => {
   dispatch(getUsersStart());
   try {
-    const res = await axios.get("http://localhost:5000/api/users", {
+    const res = await axios.get("https://netflix-server-9afl.onrender.com/api/users", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

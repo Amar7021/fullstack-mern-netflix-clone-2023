@@ -11,7 +11,7 @@ const WidgetSm = () => {
     const getNewUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/users?new=true",
+          "https://netflix-server-9afl.onrender.com/api/users?new=true",
           {
             headers: {
               token:

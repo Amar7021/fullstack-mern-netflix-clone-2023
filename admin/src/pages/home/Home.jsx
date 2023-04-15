@@ -30,7 +30,7 @@ const Home = () => {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users/stats", {
+        const res = await axios.get("https://netflix-server-9afl.onrender.com/api/users/stats", {
           headers: {
             token:
               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
