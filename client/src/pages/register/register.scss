@@ -3,13 +3,10 @@
 .register {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      to top left,
+  background: linear-gradient(to top left,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url("https://assets.nflxext.com/ffe/siteui/vlv3/3d6cf7c4-ad17-457a-b6cf-ea952926ba74/54a0de92-feb4-4891-8cb3-00a794ec89f6/IN-en-20230206-popsignuptwoweeks-perspective_alpha_website_large.jpg")
-      no-repeat;
+      rgba(0, 0, 0, 1) 100%),
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/3d6cf7c4-ad17-457a-b6cf-ea952926ba74/54a0de92-feb4-4891-8cb3-00a794ec89f6/IN-en-20230206-popsignuptwoweeks-perspective_alpha_website_large.jpg") no-repeat;
   background-size: cover;
   position: relative;
 
@@ -53,6 +50,7 @@
     color: white;
 
     h1 {
+      text-align: center;
       font-size: 50px;
 
       @include mobile {
@@ -63,6 +61,7 @@
 
     h2 {
       margin: 20px;
+
       @include mobile {
         text-align: center;
       }
@@ -70,7 +69,9 @@
 
     p {
       font-size: 20px;
+
       @include mobile {
+        display: flex;
         font-size: 15px;
         text-align: center;
         padding: 10px;
@@ -86,8 +87,11 @@
       margin-top: 20px;
       height: 50px;
       border-radius: 5px;
+
       @include mobile {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: transparent;
       }
 
@@ -97,8 +101,10 @@
         height: 100%;
         border: none;
         padding: 0 10px;
+
         @include mobile {
-          margin: 3px;
+          font-size: 14px;
+          width: 140px;
         }
       }
 
@@ -106,16 +112,17 @@
         flex: 3;
         width: 190px;
         height: 100%;
+        padding-bottom: 10px;
         background-color: red;
         border: none;
         color: white;
-        font-size: 22px;
+        padding: 5px;
+        font-size: 20px;
         cursor: pointer;
 
         @include mobile {
-          font-size: 20px;
-          margin: 30px;
-          padding: 10px;
+          font-size: 14px;
+          text-align: center;
         }
 
         &:hover {
