@@ -1,13 +1,10 @@
 .login {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      to top left,
+  background: linear-gradient(to top left,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url("https://assets.nflxext.com/ffe/siteui/vlv3/3d6cf7c4-ad17-457a-b6cf-ea952926ba74/54a0de92-feb4-4891-8cb3-00a794ec89f6/IN-en-20230206-popsignuptwoweeks-perspective_alpha_website_large.jpg")
-      no-repeat;
+      rgba(0, 0, 0, 1) 100%),
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/3d6cf7c4-ad17-457a-b6cf-ea952926ba74/54a0de92-feb4-4891-8cb3-00a794ec89f6/IN-en-20230206-popsignuptwoweeks-perspective_alpha_website_large.jpg") no-repeat;
   background-size: cover;
   color: white;
   position: relative;
@@ -69,6 +66,7 @@
         font-size: 18px;
         font-weight: 500;
         cursor: pointer;
+        outline: none;
       }
 
       span {

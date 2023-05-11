@@ -69,13 +69,11 @@ const Register = () => {
                 type="username"
                 placeholder="Username"
                 onChange={e => setUsername(e.target.value)}
-              // style={{ padding: "8px" }}
               />
               <input
                 type="password"
                 placeholder="Password"
                 onChange={e => setPassword(e.target.value)}
-                style={{ padding: "8px" }}
               />
               <button className="registerButton" onClick={handleFinish}>
                 Start

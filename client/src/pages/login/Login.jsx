@@ -29,7 +29,7 @@ const Login = () => {
         </div>
       </div>
       <div className="container">
-        <form action="">
+        <form>
           <h1>Sign In</h1>
           <input
             type="email"

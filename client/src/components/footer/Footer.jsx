@@ -76,7 +76,7 @@ const Footer = () => {
         <select name="language" id="language">
           <option value="english">English</option>
         </select>
-        <p>&copy;1997-2023 Netflix, Inc.</p>
+        <p>&copy;1997-{new Date().getFullYear()} Netflix, Inc.</p>
       </div>
     </div>
   );

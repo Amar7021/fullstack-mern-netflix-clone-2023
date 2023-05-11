@@ -57,7 +57,7 @@ const Featured = ({ type, setGenre }) => {
           </select>
         </div>
       )}
-      <img src={movie.img} alt="Featured Header" className="featured-header" />
+      <img src={movie.img} alt="" className="featured-header" />
       <div className="info">
         <img src={movie.imgTitle} alt="" className="featured-title" />
         <h3 className="movieTitle">{movie.title}</h3>
