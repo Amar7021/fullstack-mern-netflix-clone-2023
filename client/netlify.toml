@@ -1,5 +1,13 @@
+[build]
+  command = "npm run build"
+  functions = "functions"
+  publish = "public"
+
+[build.environment]
+  CLIENT_SPECIFIC_FLAG = "true"
+
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+  from = "/some-legacy-routes/*"
+  to = "/index.html"
+  status = 200
 

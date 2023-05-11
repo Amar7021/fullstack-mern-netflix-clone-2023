@@ -19,7 +19,7 @@ const Register = () => {
   const handleFinish = async e => {
     e.preventDefault();
     try {
-      await axios.post("https://netflix-server-9afl.onrender.com/api/auth/register", {
+      await axios.post("https://netflix-stream.onrender.com/api/auth/register", {
         email,
         username,
         password,

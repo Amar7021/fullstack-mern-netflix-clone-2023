@@ -14,7 +14,7 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `https://netflix-server-9afl.onrender.com/api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
+          `https://netflix-stream.onrender.com/api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
           }`,
           {
             headers: {
