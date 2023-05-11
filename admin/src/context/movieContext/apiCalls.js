@@ -18,7 +18,7 @@ import {
 export const getMovies = async dispatch => {
   dispatch(getMoviesStart());
   try {
-    const res = await axios.get("https://netflix-server-9afl.onrender.com/api/movies", {
+    const res = await axios.get("https://netflix-stream.onrender.com/api/movies", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },

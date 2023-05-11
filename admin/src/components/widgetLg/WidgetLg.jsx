@@ -9,7 +9,7 @@ const WidgetLg = () => {
     const getNewContent = async () => {
       try {
         const res = await axios.get(
-          "https://netflix-server-9afl.onrender.com/api/movies?new=true",
+          "https://netflix-stream.onrender.com/api/movies?new=true",
           {
             headers: {
               token:

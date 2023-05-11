@@ -18,7 +18,7 @@ import {
 export const getLists = async dispatch => {
   dispatch(getListsStart());
   try {
-    const res = await axios.get("https://netflix-server-9afl.onrender.com/api/lists/all", {
+    const res = await axios.get("https://netflix-stream.onrender.com/api/lists/all", {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
