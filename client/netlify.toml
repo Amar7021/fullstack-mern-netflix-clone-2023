@@ -7,7 +7,7 @@
   CLIENT_SPECIFIC_FLAG = "true"
 
 [[redirects]]
-  from = "/some-legacy-routes/*"
+  from = "/*"
   to = "/index.html"
   status = 200
 
