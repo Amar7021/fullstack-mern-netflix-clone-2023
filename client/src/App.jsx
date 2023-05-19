@@ -11,6 +11,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AuthContext } from "./authContext/AuthContext";
+import NoMatch from "./components/noMatch/NoMatch";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/watch" element={<Watch />} />
           </>
         )}
+        <Route path="*" element={<NoMatch />}></Route>
       </Routes>
     </Router>
   );

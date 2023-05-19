@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import "./register.scss";
-import axios from "axios";
+import axios from "../../api/axios"
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 
@@ -19,7 +19,7 @@ const Register = () => {
   const handleFinish = async e => {
     e.preventDefault();
     try {
-      await axios.post("https://netflix-stream.onrender.com/api/auth/register", {
+      await axios.post("/auth/register", {
         email,
         username,
         password,

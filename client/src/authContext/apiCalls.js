@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from "../api/axios";
 import { loginFailure, loginStart, loginSuccess, logout } from "./AuthActions";
 
 export const loginCall = async (user, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post("https://netflix-stream.onrender.com/api/auth/login", user);
+    const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());

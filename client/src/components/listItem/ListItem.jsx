@@ -6,7 +6,7 @@ import {
   ThumbDownOutlined,
 } from "@mui/icons-material";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 
 const ListItem = ({ index, item }) => {
@@ -17,7 +17,7 @@ const ListItem = ({ index, item }) => {
     const getMovie = async () => {
       try {
         const res = await axios.get(
-          "https://netflix-stream.onrender.com/api/movies/find/" + item,
+          "/movies/find/" + item,
           {
             headers: {
               token:

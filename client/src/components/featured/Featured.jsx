@@ -1,7 +1,7 @@
 import "./featured.scss";
 import { PlayArrow } from "@mui/icons-material";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 
 const Featured = ({ type, setGenre }) => {
@@ -11,7 +11,7 @@ const Featured = ({ type, setGenre }) => {
     const getRandomMovie = async () => {
       try {
         const res = await axios.get(
-          `https://netflix-stream.onrender.com/api/movies/random?type=${type}`,
+          `/movies/random?type=${type}`,
           {
             headers: {
               token:

@@ -3,7 +3,7 @@ import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
 import "./home.scss";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import Footer from "../../components/footer/Footer";
 
 const Home = ({ type }) => {
@@ -14,7 +14,7 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `https://netflix-stream.onrender.com/api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
+          `/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
           }`,
           {
             headers: {
