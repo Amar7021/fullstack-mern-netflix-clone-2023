@@ -67,6 +67,10 @@
         font-weight: 500;
         cursor: pointer;
         outline: none;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       span {
