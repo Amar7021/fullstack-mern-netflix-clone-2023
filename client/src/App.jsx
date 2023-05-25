@@ -12,10 +12,13 @@ import {
 } from "react-router-dom";
 import { AuthContext } from "./authContext/AuthContext";
 import NoMatch from "./components/noMatch/NoMatch";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const { user } = useContext(AuthContext);
   return (
+<>
     <Router>
       <Routes>
         <Route
@@ -40,7 +43,9 @@ const App = () => {
         )}
         <Route path="*" element={<NoMatch />}></Route>
       </Routes>
+      <ToastContainer autoClose={2000} />
     </Router>
+        </>
   );
 };
 

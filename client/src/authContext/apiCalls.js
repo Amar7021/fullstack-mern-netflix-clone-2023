@@ -1,6 +1,6 @@
+import { toast } from "react-toastify";
 import axios from "../api/axios";
 import { loginFailure, loginStart, loginSuccess, logout } from "./AuthActions";
-import { toast } from 'react-toastify';
 
 export const loginCall = async (user, dispatch) => {
   dispatch(loginStart());

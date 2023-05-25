@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logoutCall } from "../../authContext/apiCalls";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,6 +14,17 @@ const Navbar = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+
+  const handleLogout = () => {
+    logoutCall(dispatch)
+    toast.success('🦄 Logout Successfull!', {
+      position: "bottom-right",
+      autoClose: 3000,
+      closeOnClick: true,
+      draggable: true,
+      theme: "colored",
+      });
+  }
 
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
@@ -48,7 +60,7 @@ const Navbar = () => {
             <ArrowDropDown className="icon dropdown" />
             <div className="options">
               <span>Settings</span>
-              <span onClick={() => logoutCall(dispatch)}>
+              <span onClick={handleLogout}>
                 Sign out of Netflix
               </span>
             </div>

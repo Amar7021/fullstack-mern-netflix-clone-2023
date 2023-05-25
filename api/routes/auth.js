@@ -13,6 +13,7 @@ router.post("/register", async (req, res) => {
       process.env.SECRET_KEY
     ).toString(),
   });
+
   let user = await User.findOne({ email: newUser.email });
   if (!user) {
     user = await User.findOne({ username: newUser.username });
