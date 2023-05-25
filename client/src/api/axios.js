@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "https://netflix-stream.vercel.app/api"
+    baseURL: "https://flixx-stream-server.vercel.app/api"
 })
 
 export default API;
