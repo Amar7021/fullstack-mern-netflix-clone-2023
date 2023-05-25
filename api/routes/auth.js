@@ -13,11 +13,21 @@ router.post("/register", async (req, res) => {
       process.env.SECRET_KEY
     ).toString(),
   });
-  try {
-    const user = await newUser.save();
-    res.status(201).json(user);
-  } catch (err) {
-    res.status(500).json(err);
+  let user = await User.findOne({ email: newUser.email });
+  if (!user) {
+    user = await User.findOne({ username: newUser.username });
+    if (!user) {
+      try {
+        const user = await newUser.save();
+        res.status(201).json(user);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      return res.status(422).json("Username is already registered");
+    }
+  } else {
+    return res.status(422).json("Email is already registered");
   }
 });
 
