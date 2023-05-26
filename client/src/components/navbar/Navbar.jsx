@@ -1,7 +1,7 @@
 import "./navbar.scss";
 import { Search, Notifications, ArrowDropDown } from "@mui/icons-material";
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logoutCall } from "../../authContext/apiCalls";
 import { toast } from "react-toastify";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -24,6 +25,7 @@ const Navbar = () => {
       draggable: true,
       theme: "colored",
       });
+      navigate("/register")
   }
 
   return (
