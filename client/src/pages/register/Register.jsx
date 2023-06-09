@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import "./register.scss";
-import axios from "../../api/axios"
+import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import { toast } from "react-toastify";
@@ -24,16 +24,14 @@ const Register = () => {
         email,
         username,
         password,
-      }
-      );
+      });
       toast.success("🦄 Registration Successfull!", {
         position: "bottom-right",
         autoClose: 3000,
         closeOnClick: true,
         draggable: true,
         theme: "colored",
-        }
-        );
+      });
       navigate("/login");
     } catch (err) {
       toast.error("Email or Username is already in use!", {
@@ -42,7 +40,7 @@ const Register = () => {
         closeOnClick: true,
         draggable: true,
         theme: "colored",
-        });
+      });
       console.log(err);
     }
   };

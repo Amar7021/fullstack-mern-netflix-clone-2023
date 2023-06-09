@@ -17,16 +17,16 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    logoutCall(dispatch)
-    toast.success('🦄 Logout Successfull!', {
+    logoutCall(dispatch);
+    toast.success("🦄 Logout Successfull!", {
       position: "bottom-right",
       autoClose: 3000,
       closeOnClick: true,
       draggable: true,
       theme: "colored",
-      });
-      navigate("/register")
-  }
+    });
+    navigate("/register");
+  };
 
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
@@ -47,8 +47,10 @@ const Navbar = () => {
           <NavLink to="/movies" className="link">
             <span className="navbarmainLinks">Movies</span>
           </NavLink>
-          {/* <span>New and Popular</span>
-          <span>My List</span> */}
+          {/* <span>New and Popular</span> */}
+          <NavLink to="/mylist" className="link">
+            <span className="navbarmainLinks">My List</span>
+          </NavLink>
         </div>
         <div className="right">
           <Search className="icon" />
@@ -62,9 +64,7 @@ const Navbar = () => {
             <ArrowDropDown className="icon dropdown" />
             <div className="options">
               <span>Settings</span>
-              <span onClick={handleLogout}>
-                Sign out of Netflix
-              </span>
+              <span onClick={handleLogout}>Sign out of Netflix</span>
             </div>
           </div>
         </div>

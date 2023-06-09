@@ -16,7 +16,7 @@ mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("Database Connection Successfull"))
-  .catch((err) => {
+  .catch(err => {
     console.error(err);
   });
 

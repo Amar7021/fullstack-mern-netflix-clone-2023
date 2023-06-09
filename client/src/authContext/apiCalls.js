@@ -7,13 +7,13 @@ export const loginCall = async (user, dispatch) => {
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
-    toast.success('🦄 Login Successfull!', {
+    toast.success("🦄 Login Successfull!", {
       position: "bottom-right",
       autoClose: 3000,
       closeOnClick: true,
       draggable: true,
       theme: "colored",
-      });
+    });
   } catch (err) {
     toast.error("Email or Password is wrong!", {
       position: "bottom-right",
@@ -21,7 +21,7 @@ export const loginCall = async (user, dispatch) => {
       closeOnClick: true,
       draggable: true,
       theme: "colored",
-      });
+    });
     dispatch(loginFailure());
   }
 };
