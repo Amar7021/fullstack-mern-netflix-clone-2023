@@ -65,7 +65,7 @@ const Featured = ({ type, setGenre }) => {
             style={{ textDecoration: "none" }}
           >
             <button className="play">
-              <PlayArrow />
+              <PlayArrow className="playIcon" />
               <span>Play</span>
             </button>
           </Link>

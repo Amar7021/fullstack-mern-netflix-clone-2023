@@ -121,26 +121,23 @@
       display: flex;
 
       button {
-        padding: 10px 20px;
+        width: 110px;
+        height: 45px;
+        // padding: 8px 8px;
         border: none;
         border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 18px;
-        font-weight: 500;
+        font-weight: 700;
         margin-right: 10px;
         gap: 5px;
         cursor: pointer;
 
-        @include tablet {
-          font-size: 20px;
-          padding: 10px 10px;
-        }
-
         @include mobile {
+          width: 90px;
           font-size: 14px;
-          padding: 5px 5px;
         }
 
         &.play {
@@ -159,18 +156,22 @@
             background-color: rgba(255, 255, 255, 0.678);
           }
         }
+
+        .playIcon {
+          font-size: 40px;
+        }
       }
     }
   }
 
   .age-rating {
     color: #f4f1e9;
-    font-size: 20px;
+    font-size: 18px;
     position: absolute;
     right: -178%;
-    padding: 8px 70px 8px 8px;
-    background-color: #ffffff18;
-    border-left: 3px solid #bebebe;
+    padding: 8px 80px 8px 8px;
+    background-color: rgba(51, 51, 51, 0.6);
+    border-left: 3px solid lightgray;
 
     @include tablet {
       right: -50%;
