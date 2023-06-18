@@ -56,7 +56,6 @@ const Featured = ({ type, setGenre }) => {
       <img src={movie.img} alt="" className="featured-header" />
       <div className="info">
         <img src={movie.imgTitle} alt="" className="featured-title" />
-        <h3 className="movieTitle">{movie.title}</h3>
         <span className="desc">{movie.desc}</span>
         <div className="buttons">
           <Link

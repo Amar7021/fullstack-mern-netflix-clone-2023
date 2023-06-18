@@ -23,39 +23,37 @@ const FavListItem = props => {
       {movies.map(movie => (
         <div className="listContainer" key={movie?._id}>
           <img src={movie?.imgSm} alt="" />
-          <>
-            <div className="movieItem">
-              <video src={movie?.trailer} autoPlay={true} loop />
-              <div className="itemInfo">
-                <div className="icons">
-                  <Link to="/watch" state={{ movie }} className="playLink">
-                    <div className="play">
-                      <PlayArrow className="playIcon" />
-                      <p className="playContent">Play</p>
-                    </div>
-                  </Link>
-                  <div className="remove">
-                    <Check
-                      className="removeIcon"
-                      onClick={() => handleRemoveFromList(movie)}
-                    />
-                    <p className="removeFromList">Remove from My List</p>
+          <div className="movieItem">
+            <video src={movie?.trailer} autoPlay={true} loop />
+            <div className="itemInfo">
+              <div className="icons">
+                <Link to="/watch" state={{ movie }} className="playLink">
+                  <div className="play">
+                    <PlayArrow className="playIcon" />
+                    <p className="playContent">Play</p>
                   </div>
-                  <ThumbUpAltOutlined className="icon" />
-                  <ThumbDownOutlined className="icon" />
+                </Link>
+                <div className="remove">
+                  <Check
+                    className="removeIcon"
+                    onClick={() => handleRemoveFromList(movie)}
+                  />
+                  <p className="removeFromList">Remove from My List</p>
                 </div>
-                <div className="itemInfoTop">
-                  <span>{movie?.duration}</span>
-                  <span className="limit">+{movie?.limit}</span>
-                  <span>{movie?.year}</span>
-                </div>
-                <div className="desc">{movie?.desc.slice(0, 140) + "..."}</div>
-                <div className="genre">
-                  {movie?.genre.charAt(0).toUpperCase() + movie?.genre.slice(1)}
-                </div>
+                <ThumbUpAltOutlined className="icon" />
+                <ThumbDownOutlined className="icon" />
+              </div>
+              <div className="itemInfoTop">
+                <span>{movie?.duration}</span>
+                <span className="limit">+{movie?.limit}</span>
+                <span>{movie?.year}</span>
+              </div>
+              <div className="desc">{movie?.desc.slice(0, 140) + "..."}</div>
+              <div className="genre">
+                {movie?.genre.charAt(0).toUpperCase() + movie?.genre.slice(1)}
               </div>
             </div>
-          </>
+          </div>
         </div>
       ))}
     </div>

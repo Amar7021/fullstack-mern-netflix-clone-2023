@@ -4,6 +4,7 @@
   background-color: #0b0b0b;
   color: rgba(255, 255, 255, 0.7);
   margin-top: auto;
+  overflow: hidden;
 
   .socials {
     margin-left: 175px;
@@ -33,22 +34,24 @@
     margin-left: 170px;
     display: grid;
     grid-template-columns: repeat(4, max-content);
-    grid-gap: 30px 30px;
+    grid-gap: 80px 80px;
+
+    @include large {
+      padding: 0;
+      grid-gap: 0 20px;
+    }
 
     @include tablet {
+      grid-template-columns: repeat(2, max-content);
       padding: 0px;
       margin-left: 100px;
-      display: grid;
-      grid-template-columns: repeat(4, max-content);
-      grid-gap: 0px 0px;
+      grid-gap: 0px 80px;
     }
 
     @include mobile {
       padding: 0px;
       margin-left: 50px;
-      display: grid;
-      grid-template-columns: repeat(2, 180px);
-      grid-gap: 0px 0px;
+      grid-gap: 0px 30px;
     }
   }
 

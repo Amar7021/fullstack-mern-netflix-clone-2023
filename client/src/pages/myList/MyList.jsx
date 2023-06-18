@@ -1,19 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import "./myList.scss";
-import { clearAllFromMyList } from "../../redux/features/myListSlice";
 import { Favorite } from "@mui/icons-material";
 import FavListItem from "../../components/favListItem/FavListItem";
+import ConfirmModal from "../../components/modal/confirmModal/ConfirmModal";
 
 const MyList = () => {
   const { movies } = useSelector(state => state?.myLists);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // const [disable, setDisable] = useState(false);
 
   // Clear from My List
-  const handleClearList = () => {
-    dispatch(clearAllFromMyList());
-  };
+  // const handleClearList = () => {
+  //   // dispatch(clearAllFromMyList());
+  //   setOpen(true);
+  //   setDisable(!disable);
+  // };
 
   return (
     <div className="myList">
@@ -25,9 +28,14 @@ const MyList = () => {
           <h2>
             <Favorite className="heartIcon" /> Your Favourites: {movies.length}
           </h2>
-          <button className="clearBtn" onClick={() => handleClearList()}>
+          {/* <Button
+            className="clearBtn"
+            onClick={() => setOpen(true)}
+            // disabled={disable}
+          >
             Clear All
-          </button>
+          </Button> */}
+          <ConfirmModal />
         </div>
         {movies.length === 0 ? (
           <h2 className="subHeading">

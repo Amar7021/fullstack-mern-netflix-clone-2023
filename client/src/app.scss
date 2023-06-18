@@ -19,6 +19,12 @@ body {
   text-decoration: none;
 }
 
+@mixin large {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (max-width: 768px) {
     @content;

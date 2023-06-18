@@ -4,16 +4,21 @@ import {
   Add,
   ThumbUpAltOutlined,
   ThumbDownOutlined,
+  Check,
 } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToMyList } from "../../redux/features/myListSlice";
+import {
+  addToMyList,
+  removeFromMyList,
+} from "../../redux/features/myListSlice";
 
 const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
+  const [isAdded, setIsAdded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +40,14 @@ const ListItem = ({ index, item }) => {
 
   // Add to My List
   const handleAddToList = movie => {
+    setIsAdded(p => !p);
     dispatch(addToMyList(movie));
+  };
+
+  // Remove from My List
+  const handleRemoveFromList = movie => {
+    setIsAdded(p => !p);
+    dispatch(removeFromMyList(movie));
   };
 
   return (
@@ -57,14 +69,23 @@ const ListItem = ({ index, item }) => {
                   <p className="playContent">Play</p>
                 </div>
               </Link>
-              <div className="add">
-                <Add
-                  className="addIcon"
-                  onClick={() => handleAddToList(movie)}
-                />
-                <p className="addtoList">Add to My List</p>
-              </div>
-
+              {!isAdded ? (
+                <div className="add">
+                  <Add
+                    className="addIcon"
+                    onClick={() => handleAddToList(movie)}
+                  />
+                  <p className="addtoList">Add to My List</p>
+                </div>
+              ) : (
+                <div className="remove">
+                  <Check
+                    className="removeIcon"
+                    onClick={() => handleRemoveFromList(movie)}
+                  />
+                  <p className="removeFromList">Remove from My List</p>
+                </div>
+              )}
               <ThumbUpAltOutlined className="icon" />
               <ThumbDownOutlined className="icon" />
             </div>
