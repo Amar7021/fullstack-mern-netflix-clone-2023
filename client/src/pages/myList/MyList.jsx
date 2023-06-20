@@ -8,15 +8,6 @@ import ConfirmModal from "../../components/modal/confirmModal/ConfirmModal";
 
 const MyList = () => {
   const { movies } = useSelector(state => state?.myLists);
-  // const dispatch = useDispatch();
-  // const [disable, setDisable] = useState(false);
-
-  // Clear from My List
-  // const handleClearList = () => {
-  //   // dispatch(clearAllFromMyList());
-  //   setOpen(true);
-  //   setDisable(!disable);
-  // };
 
   return (
     <div className="myList">
@@ -28,13 +19,6 @@ const MyList = () => {
           <h2>
             <Favorite className="heartIcon" /> Your Favourites: {movies.length}
           </h2>
-          {/* <Button
-            className="clearBtn"
-            onClick={() => setOpen(true)}
-            // disabled={disable}
-          >
-            Clear All
-          </Button> */}
           <ConfirmModal />
         </div>
         {movies.length === 0 ? (
@@ -43,7 +27,9 @@ const MyList = () => {
           </h2>
         ) : null}
         <div className="favlistItem">
-          <FavListItem />
+          {movies.map(movie => (
+            <FavListItem key={movie._id} movie={movie} />
+          ))}
         </div>
       </div>
       <Footer />

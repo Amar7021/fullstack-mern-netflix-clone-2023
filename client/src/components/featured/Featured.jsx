@@ -3,9 +3,12 @@ import { PlayArrow } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Featured = ({ type, setGenre }) => {
   const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getRandomMovie = async () => {
@@ -17,6 +20,8 @@ const Featured = ({ type, setGenre }) => {
           },
         });
         setMovie(res.data[0]);
+        setIsLoading(false);
+        return res;
       } catch (err) {
         console.log(err);
       }
@@ -26,6 +31,7 @@ const Featured = ({ type, setGenre }) => {
 
   return (
     <div className="featured">
+      {isLoading ? <Skeleton height={820} /> : null}
       {type && (
         <div className="category">
           <span className="featuredMovieType">

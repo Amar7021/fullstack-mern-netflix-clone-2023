@@ -103,10 +103,6 @@
         border-radius: 5px;
         object-fit: cover;
         cursor: pointer;
-
-        @include mobile {
-          margin-right: 20px;
-        }
       }
 
       .profile {
@@ -115,7 +111,6 @@
           background-color: var(--main-color);
           border-radius: 5px;
           width: 180px;
-          // height: 100px;
 
           &::before {
             content: "";

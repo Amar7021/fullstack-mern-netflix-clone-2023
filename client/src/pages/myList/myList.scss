@@ -74,4 +74,10 @@
       }
     }
   }
+
+  .favlistItem {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 80px 0 40px 65px;
+  }
 }

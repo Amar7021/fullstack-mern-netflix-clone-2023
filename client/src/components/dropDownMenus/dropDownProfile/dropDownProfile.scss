@@ -3,7 +3,7 @@
 .dropDownProfile {
   display: none;
   width: 200px;
-  height: 220px;
+  height: 240px;
   background-color: var(--main-color);
   border-radius: 10px;
   position: absolute;
@@ -15,7 +15,7 @@
   @include tablet {
     display: flex;
     width: 200px;
-    height: 220px;
+    height: 240px;
     background-color: var(--main-color);
     border-radius: 10px;
     position: absolute;
@@ -23,6 +23,10 @@
     transform: translateY(20);
     transition: 0.5s ease-in;
     margin-right: 10px;
+  }
+
+  @include mobile {
+    width: 185px;
   }
 
   &::before {
@@ -48,6 +52,9 @@
     margin-left: 20px;
 
     li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       list-style: none;
       cursor: pointer;
       padding: 2px;
@@ -56,11 +63,6 @@
         color: #8f8f8f;
         text-decoration: underline;
       }
-    }
-
-    .profileIcon {
-      margin-bottom: -8px;
-      margin-right: 10px;
     }
   }
 }

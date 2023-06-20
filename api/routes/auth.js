@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
         res.status(500).json(err);
       }
     } else {
-      return res.status(422).json("Username is already registered");
+      return res.status(422).json("Username is already in use");
     }
   } else {
     return res.status(422).json("Email is already registered");
