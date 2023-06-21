@@ -6,7 +6,6 @@ import Footer from "../../components/footer/Footer";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { CircularProgress } from "@mui/material";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -24,7 +23,6 @@ const validationSchema = Yup.object().shape({
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   const emailRef = useRef();
@@ -49,7 +47,6 @@ const Register = () => {
         theme: "colored",
       });
       navigate("/login");
-      setIsLoading(false);
     } catch (err) {
       toast.error("Email or Username is already in use!", {
         position: "bottom-right",
@@ -58,7 +55,6 @@ const Register = () => {
         draggable: true,
         theme: "colored",
       });
-      setIsLoading(false);
       console.log(err);
     }
   };
@@ -160,15 +156,7 @@ const Register = () => {
                   type="submit"
                   disabled={!isValid}
                 >
-                  {!isLoading ? (
-                    <CircularProgress
-                      color="inherit"
-                      size={25}
-                      className="progressIcon"
-                    />
-                  ) : (
-                    "Start"
-                  )}
+                  Start
                 </button>
               </form>
               <div className="registerError">
