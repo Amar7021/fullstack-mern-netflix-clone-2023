@@ -1,10 +1,10 @@
 import Navbar from "../../components/navbar/Navbar";
 import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
-import "./home.scss";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import Footer from "../../components/footer/Footer";
+import "./home.scss";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);

@@ -4,11 +4,27 @@ import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { CircularProgress } from "@mui/material";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address!")
+    .required("Email is required!"),
+  username: Yup.string()
+    .min(3, "Username must be at least 3 characters!")
+    .max(16, "Username must be less than 16 characters!")
+    .required("Username is required!"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters!")
+    .max(20, "Password must be less than 20 characters!")
+    .required("Password is required!"),
+});
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   const emailRef = useRef();
@@ -17,8 +33,8 @@ const Register = () => {
     setEmail(emailRef.current.value);
   };
 
-  const handleFinish = async e => {
-    e.preventDefault();
+  const onSubmit = async values => {
+    const { email, username, password } = values;
     try {
       await axios.post("/auth/register", {
         email,
@@ -33,6 +49,7 @@ const Register = () => {
         theme: "colored",
       });
       navigate("/login");
+      setIsLoading(false);
     } catch (err) {
       toast.error("Email or Username is already in use!", {
         position: "bottom-right",
@@ -41,9 +58,28 @@ const Register = () => {
         draggable: true,
         theme: "colored",
       });
+      setIsLoading(false);
       console.log(err);
     }
   };
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+  } = useFormik({
+    initialValues: {
+      email: "",
+      username: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit,
+  });
 
   const goToLogin = () => {
     navigate("/login");
@@ -72,28 +108,78 @@ const Register = () => {
             membership.
           </p>
           {!email ? (
-            <div className="input">
-              <input type="email" placeholder="Email address" ref={emailRef} />
-              <button className="registerButton" onClick={handleStart}>
-                Get Started
-              </button>
-            </div>
+            <>
+              <div className="input">
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email address"
+                  ref={emailRef}
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.email && touched.email ? "input-error" : ""}
+                />
+                <button className="registerButton" onClick={handleStart}>
+                  Get Started
+                </button>
+              </div>
+              <div className="registerError">
+                {errors.email && touched.email ? (
+                  <p className="error">{errors.email}</p>
+                ) : null}
+              </div>
+            </>
           ) : (
-            <form className="input">
-              <input
-                type="username"
-                placeholder="Username"
-                onChange={e => setUsername(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={e => setPassword(e.target.value)}
-              />
-              <button className="registerButton" onClick={handleFinish}>
-                Start
-              </button>
-            </form>
+            <>
+              <form className="input" onSubmit={handleSubmit}>
+                <input
+                  name="username"
+                  type="username"
+                  placeholder="Username"
+                  value={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.username && touched.username ? "input-error" : ""
+                  }
+                />
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.password && touched.password ? "input-error" : ""
+                  }
+                />
+                <button
+                  className="registerButton"
+                  type="submit"
+                  disabled={!isValid}
+                >
+                  {!isLoading ? (
+                    <CircularProgress
+                      color="inherit"
+                      size={25}
+                      className="progressIcon"
+                    />
+                  ) : (
+                    "Start"
+                  )}
+                </button>
+              </form>
+              <div className="registerError">
+                {errors.username && touched.username ? (
+                  <p className="error">{errors.username}</p>
+                ) : null}
+                {errors.password && touched.password ? (
+                  <p className="error">{errors.password}</p>
+                ) : null}
+              </div>
+            </>
           )}
         </div>
       </div>

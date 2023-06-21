@@ -1,18 +1,46 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { loginCall } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import "./login.scss";
+import { LoginOutlined } from "@mui/icons-material";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required!"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters!")
+    .max(20, "Password must be less than 20 characters!")
+    .required("Password is required!"),
+});
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
 
-  const handleLogin = e => {
-    e.preventDefault();
+  const onSubmit = values => {
+    const { email, password } = values;
     loginCall({ email, password }, dispatch);
   };
+
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    isValid,
+  } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit,
+  });
 
   return (
     <div className="login">
@@ -29,20 +57,39 @@ const Login = () => {
         </div>
       </div>
       <div className="container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1>Sign In</h1>
           <input
+            name="email"
             type="email"
             placeholder="Email or phone number"
-            onChange={e => setEmail(e.target.value)}
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.email && touched.email ? "input-error" : ""}
           />
+          <div className="emailError">
+            {errors.email && touched.email ? (
+              <p className="error">{errors.email}</p>
+            ) : null}
+          </div>
           <input
+            name="password"
             type="password"
             placeholder="Password"
-            onChange={e => setPassword(e.target.value)}
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.password && touched.password ? "input-error" : ""}
           />
-          <button className="loginButton" onClick={handleLogin}>
-            Sign In
+          <div className="emailError">
+            {errors.password && touched.password ? (
+              <p className="error">{errors.password}</p>
+            ) : null}
+          </div>
+          <button className="loginButton" type="submit" disabled={!isValid}>
+            <LoginOutlined fontSize="small" className="loginIcon" />
+            <span>Sign In</span>
           </button>
           <span>
             New to Netflix?{" "}

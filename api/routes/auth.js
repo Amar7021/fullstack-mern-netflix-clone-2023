@@ -25,10 +25,10 @@ router.post("/register", async (req, res) => {
         res.status(500).json(err);
       }
     } else {
-      return res.status(422).json("Username is already in use");
+      return res.status(422).json("Email or Username is already in use!");
     }
   } else {
-    return res.status(422).json("Email is already registered");
+    return res.status(422).json("Email or Username is already in use!");
   }
 });
 
@@ -37,18 +37,18 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    !user && res.status(401).json("Wrong email or password!");
+    !user && res.status(401).json("Email or Password is wrong!");
 
     const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
 
     originalPassword !== req.body.password &&
-      res.status(401).json("Wrong email or password!");
+      res.status(401).json("Email or Password is wrong!");
 
     const accessToken = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.SECRET_KEY,
-      { expiresIn: "5d" }
+      { expiresIn: "2d" }
     );
     const { password, ...info } = user._doc;
 

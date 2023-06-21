@@ -103,7 +103,12 @@
         flex: 9;
         height: 100%;
         border: none;
+        outline: none;
         padding: 0 10px;
+
+        &.input-error {
+          border: 2px solid red;
+        }
 
         @include tablet {
           font-size: 14px;
@@ -130,6 +135,29 @@
 
         &:hover {
           background-color: rgb(198, 25, 25);
+        }
+
+        &:disabled {
+          filter: contrast(0.8);
+        }
+      }
+    }
+
+    .registerError {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+      margin-top: 5px;
+      position: absolute;
+      bottom: 180px;
+
+      .error {
+        color: red;
+        font-size: 16px;
+        padding: 5px 15px;
+        text-align: center;
+
+        @include tablet {
+          font-size: 14px;
         }
       }
     }
